@@ -1,0 +1,27 @@
+<span ng-show="updbtn">upload csv</span>
+<!-- <form ng-submit="voterscsv.uploadcomelicdata(voterdata);"> -->
+<input type="text" ng-model="uid" ng-value="main.uid">
+<input type="file" ng-show="updbtn" data-file-reader-directive="fileContent" accept=".csv" />
+<input type='button' ng-show="updbtn" value="Upload" ng-click="uploadFile();data=false;"> Barangay: {{brngy}}
+<div>
+    <table class="table table-striped">
+        <tr>
+            <td>Name</td>
+            <td>Middle Name</td>
+            <td>last Name</td>
+            <td>Precinct No.</td>
+            <td>Address Register in comelec</td>
+            <td>bday</td>
+        </tr>
+        <tr ng-repeat="item in tbdata">
+            <td>{{item.fname}}</td>
+            <td>{{item.mname}}</td>
+            <td>{{item.lname}}</td>
+            <td>{{item.prno}}</td>
+            <td>{{item.vadd}}</td>
+            <td>{{item.bday}}</td>
+
+        </tr>
+    </table>
+</div>
+<!-- </form> -->

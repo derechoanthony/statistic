@@ -1,0 +1,11 @@
+main{
+    padding: 30px;
+}
+header .navbar{
+    border-radius:0px;
+}
+.show-hide-message.ng-hide-remove{
+    -webkit-animation: zoomIn 0.3s both ease;
+    -moz-animation:zoomIn 0.3s both ease;
+    animation:zoomIn both ease;
+}

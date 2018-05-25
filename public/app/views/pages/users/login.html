@@ -1,0 +1,31 @@
+<div class="container" ng-show="!main.isloggedIn">
+    <div class="page-header">
+        <h2>User Login</h2>
+    </div>
+    <form ng-submit="main.dologin(loginData);">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Enter Username" ng-model="main.loginData.username">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" ng-model="main.loginData.password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br>
+    <div ng-show="main.loading">
+        <img src="asset/image/loading.gif" height="60px">
+    </div>
+    <div class=" show-hide-message" ng-show="main.successMsg">
+        <div class="alert alert-success" role="alert">
+            <img src="asset/image/loading.gif" height="60px">&nbsp;{{ main.successMsg }}
+        </div>
+    </div>
+    <div class="show-hide-message" ng-show="main.errorMsg">
+        <div class="alert alert-danger" role="alert">
+            {{ main.errorMsg }}
+        </div>
+    </div>
+</div>

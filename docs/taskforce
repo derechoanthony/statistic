@@ -1,0 +1,13 @@
+json entry 
+taskforce/entry
+x-access-token
+req.token
+{
+	"fname":"johny",
+	"lname":"wick",
+	"taskforce":"alpha",
+	"barangay":"tes",
+	"bco":"tes",
+	"regdate":"test",
+	"status":"active"
+}

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+    <title>Stat</title>
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="asset/css/animate.css" rel="stylesheet">
+    <link href="asset/css/main.css" rel="stylesheet">
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="asset/css/logo-nav.css" rel="stylesheet">
+    <!-- <link href="asset/css/product.css" rel="stylesheet"> -->
+
+    <script src="asset/js/angular.js"></script>
+    <script src="asset/js/angular-route.js"></script>
+    <script src="asset/js/angular-animate.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+
+    <script src="app/controllers/usrctrl.js"></script>
+    <script src="app/controllers/mainctrl.js"></script>
+    <script src="app/controllers/votersctrl.js"></script>
+    <script src="app/controllers/taskforcectrl.js"></script>
+
+    <script src="app/services/userServices.js"></script>
+    <script src="app/services/authServices.js"></script>
+    <script src="app/services/votersServices.js"></script>
+    <script src="app/services/taskforceServices.js"></script>
+
+</head>
+
+<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>
+    <!-- <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+    <a class="navbar-brand text-light" href="/">
+        <img src="asset/image/cloud-computing.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li ng-show="main.isloggedIn" class="nav-item active">
+                    <a class="nav-link text-light" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+            </li>
+            <li ng-show="main.isloggedIn" class="nav-item">
+                <a class="nav-link text-light" href="/register">Register</a>
+            </li>
+            <li ng-show="main.isloggedIn" class="nav-item">
+                <a class="nav-link text-light" href="/about">About</a>
+            </li>
+            <li ng-show="main.isloggedIn" class="nav-item">
+                <a class="nav-link text-light" href="#" ng-click="main.logout();">logout</a>
+            </li>
+        </ul>
+        <span class="navbar-text text-light">
+            <ul class="navbar-nav mr-auto">
+                 <li class="nav-item" ng-show="!main.isloggedIn">
+                    <a class="nav-link text-light" href="/login">Login</a>
+                </li>
+                 <li class="nav-item" ng-show="main.isloggedIn">
+                    <a class="nav-link text-light" href="/profile">hello {{main.username}}</a>
+                </li>
+            </ul>
+        </span>
+    </div>
+</nav> -->
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="http://placehold.it/300x60?text=Logo" width="150" height="30" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li ng-show="main.isloggedIn" class="nav-item active">
+                        <a class="nav-link text-light" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    </li>
+                    <li ng-show="main.isloggedIn" class="nav-item">
+                        <a class="nav-link text-light" href="/register">Register</a>
+                    </li>
+                    <li ng-show="main.isloggedIn" class="nav-item">
+                        <a class="nav-link text-light" href="/taskforce">Create Taskforce</a>
+                    </li>
+                    <li ng-show="main.isloggedIn" class="nav-item">
+                        <a class="nav-link text-light" href="/">Create Cluster</a>
+                    </li>
+                    <li ng-show="main.isloggedIn" class="nav-item">
+                        <a class="nav-link text-light" href="/comelec-data">Upload Data</a>
+                    </li>
+
+                    <li class="nav-item" ng-show="!main.isloggedIn">
+                        <a class="nav-link text-light" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        &nbsp;
+                    </li>
+
+                    <li class="nav-item dropdown" ng-show="main.isloggedIn" style="margin-left: -9px;">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        hello {{main.username}}
+                       
+                    </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="left: 20px;    margin-top: -10px;">
+                            <a class="dropdown-item" href="/profile"><i class="fas fa-users-cog"></i>&nbsp;Profile</a>
+                            <a class="dropdown-item" href="#" ng-click="main.logout();"> <i class="fas fa-power-off text-danger"></i>&nbsp;Sing Out</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                    <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                    <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                    <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                    <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                    <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                </svg>
+            </a>
+            <a ng-show="main.isloggedIn" class="py-2 d-none d-md-inline-block" href="/">Home</a>
+            <a ng-show="main.isloggedIn" class="py-2 d-none d-md-inline-block" href="/register">Register</a>
+            <a ng-show="!main.isloggedIn" class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+            <a ng-show="main.isloggedIn" class="py-2 d-none d-md-inline-block" href="/about">About</a>
+            <a ng-show="main.isloggedIn" class="py-2 d-none d-md-inline-block" href="#" ng-click="main.logout();">logout</a>
+            <a ng-show="main.isloggedIn" class="py-2 d-none d-md-inline-block" href="/profile">hello {{main.username}}</a>
+        </div>
+    </nav> -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <div class="container">
+        <div ng-view></div>
+    </div>
+
+    <script src="asset/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="asset/js/bootstrap.min.js"></script>
+</body>
+
+</html>
