@@ -2,6 +2,7 @@ angular.module('mainControllers', ['authServices'])
     .controller('mainCtrl', function($http, $location, $timeout, Auth, $rootScope) {
         var app = this;
         app.loadme = false;
+        app.isloggedIn = false;
         //  app.data = bookinglist();
         $rootScope.$on('$routeChangeStart', function() {
             if (Auth.isLogIn()) {
@@ -10,7 +11,6 @@ angular.module('mainControllers', ['authServices'])
                     // console.log(data.data.id);
                     app.uid = data.data.id;
                     app.username = data.data.username;
-                    app.email = data.data.email;
                     app.loadme = true;
                 });
                 // app.calendardata = bookinglist;
@@ -18,13 +18,12 @@ angular.module('mainControllers', ['authServices'])
                 // console.log("Failed: User is not log in");
                 app.uid = '';
                 app.username = '';
-                app.email = '';
                 app.isloggedIn = false;
                 app.loadme = true;
                 // app.calendardata = {};
             }
         });
-        // console.log('uid>>', app[0].uid)
+        console.log('isloggedIn >>', app.isloggedIn);
         this.dologin = function(loginData) {
             app.errorMsg = false;
             app.loading = true;
@@ -34,7 +33,7 @@ angular.module('mainControllers', ['authServices'])
                     app.loading = false;
                     app.successMsg = params.data.msg + '... Redirecting.';
                     $timeout(function() {
-                        $location.path('/about');
+                        $location.path('/home');
                         app.loginData = '';
                         app.successMsg = false;
                     }, 2000);
@@ -49,7 +48,7 @@ angular.module('mainControllers', ['authServices'])
             $location.path('/logout');
             $timeout(function() {
                 $location.path('/');
-            }, 2000);
+            }, 1000);
         };
         // booking list
         this.bookinglist = function() {

@@ -9,9 +9,11 @@
   "author": "anthonyderecho",
   "license": "ISC",
   "dependencies": {
+    "angular-data-table": "^0.7.1",
     "app-root-path": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "bootstrap": "^4.1.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.16",
