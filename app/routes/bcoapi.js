@@ -1,48 +1,45 @@
-var dbo = require('../models/taskforce'),
-    code = require('../config/codec'),
-    ObjectID = require('mongodb').ObjectID;
+var dbo = require("../models/bco"),
+    code = require('../config/codec');
 module.exports = function(router) {
     /* 
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        Description: Docuemnt Entry for taskfoce collection
-        Scope: Entry *
-        Date: May 25, 2018
-        Alter: 0
+    Description: Docuemnt Entry for BCO collection
+    Scope: Entry *
+    Date: May 25, 2018
+    Alter: 0
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     */
     /* data entry */
-    router.post("/taskforce/entry", function(req, res) {
+    router.post("/bco/entry", function(req, res) {
         code.codec(function(ucode) {
-            var j = {},
-                data = {},
-                timeInMs = ucode,
-                taskforcedata = req.body;
-            taskforcedata.code = timeInMs;
-            d = new dbo(taskforcedata);
+            var json = req.body;
+            json.code = ucode;
+            d = new dbo(json);
+            result = {};
             d.save(function(err) {
                 if (err) {
-                    data.msg = err.errmsg;
-                    data.success = false;
-                    data.code = 304;
+                    result.code = 304;
+                    result.success = false;
+                    result.msg = err;
                 } else {
-                    data.msg = 'New Task force data inserted!';
-                    data.success = true;
-                    data.code = 200;
+                    result.code = 200;
+                    result.success = true;
+                    result.msg = "New BCO(Barangay Cluster Officer) Successfully added!";
                 }
-                res.json(data);
+                res.json(result);
             });
         });
     });
     /* 
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        Description: Document Updates
-        Scope: Update *
-        Date: May 25, 2018
-        Alter: 0
+    Description: Document Updates
+    Scope: Update *
+    Date: May 25, 2018
+    Alter: 0
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     */
     /* data update */
-    router.post("/taskforce/:id/update", function(req, response) {
+    router.post("/bco/:id/update", function(req, response) {
         var newvalues = {
                 $set: req.body
             },
@@ -75,7 +72,7 @@ module.exports = function(router) {
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     */
     /* deactivate specifi data */
-    router.get("/taskforce/:id/deactivate", function(req, response) {
+    router.get("/bco/:id/deactivate", function(req, response) {
         var result = {},
             que = {
                 code: req.params.id
@@ -102,7 +99,7 @@ module.exports = function(router) {
         });
     });
     /* activate specific data */
-    router.get("/taskforce/:id/activate", function(req, response) {
+    router.get("/bco/:id/activate", function(req, response) {
         var result = {},
             que = {
                 code: req.params.id
@@ -130,14 +127,14 @@ module.exports = function(router) {
     });
     /* 
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        Description: Que Taskforce Documents
+        Description: Que BCO Documents
         Scope: list, single que, active list and inactive list
         Date: May 25, 2018
         Alter: 0
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     */
     /* preview all data query* */
-    router.get("/taskforce/list/", function(req, response) {
+    router.get("/bco/list/", function(req, response) {
         var result = {};
         dbo.find({}, function(err, res) {
             if (err) {
@@ -153,7 +150,7 @@ module.exports = function(router) {
         });
     });
     /* preview specific data */
-    router.get("/taskforce/:id/preview", function(req, response) {
+    router.get("/bco/:id/preview", function(req, response) {
         var result = {},
             que = {
                 code: req.params.id
@@ -172,7 +169,7 @@ module.exports = function(router) {
         });
     });
     /* preview all In-active data */
-    router.get("/taskforce/inactive/list", function(err, response) {
+    router.get("/bco/inactive/list", function(err, response) {
         var result = {},
             que = {
                 status: "Inactivate"
@@ -191,7 +188,7 @@ module.exports = function(router) {
         });
     });
     /* preview all active data */
-    router.get("/taskforce/active/list", function(err, response) {
+    router.get("/bco/active/list", function(err, response) {
         var result = {},
             que = {
                 status: "active"
@@ -214,10 +211,10 @@ module.exports = function(router) {
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         return all the api result 
-        total number of lines: 219
+        total number of lines: 
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-        */
+    */
     return router;
-}
+};

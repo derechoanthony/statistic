@@ -1,33 +1,38 @@
-//packages
-var express = require('express');
-var morgan = require('morgan');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var passport = require('passport');
-var path = require('path');
-var app = express();
+/* packages */
+var express = require('express'),
+    morgan = require('morgan'),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    path = require('path'),
+    app = express();
 /* porst config */
-var port = process.env.PORT || 8000;
-var router = express.Router();
+var port = process.env.PORT || 8000,
+    router = express.Router();
 /* API's */
-var appRoute = require('./app/routes/api')(router);
-var appRoutevoters = require('./app/routes/votersapi')(router);
-var appRoute_TF = require('./app/routes/taskforceapi')(router);
-var social = require('./app/passport/passport')(app, passport);
+var appRoute = require('./app/routes/api')(router),
+    appRoutevoters = require('./app/routes/votersapi')(router),
+    appRoute_TF = require('./app/routes/taskforceapi')(router),
+    appRoute_BCO = require('./app/routes/bcoapi')(router);
 /* logger */
-var winston = require('./app/config/winston');
+// var winston = require('./app/config/winston');
 
-// middleware
-// app.use(morgan('dev'));
-app.use(morgan('combined', {
-    stream: winston.stream
-}));
+/*  middleware */
+app.use(morgan('dev'));
+// app.use(morgan('combined', {
+//     stream: winston.stream
+// }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'))
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+/* Api routes */
 app.use("/api", appRoute);
 app.use("/api", appRoutevoters);
 app.use("/api", appRoute_TF);
+app.use("/api", appRoute_BCO);
 
 
 // db connection

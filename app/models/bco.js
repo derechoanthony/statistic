@@ -4,9 +4,10 @@
 */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    taskSchema = new Schema({
+    bcoSchema = new Schema({
         code: {
             type: String,
+            lowercase: true,
             required: true
         },
         fname: {
@@ -19,22 +20,7 @@ var mongoose = require('mongoose'),
             lowercase: true,
             required: true
         },
-        taskforce: {
-            type: String,
-            lowercase: true,
-            required: true
-        },
-        barangay: {
-            type: String,
-            lowercase: true,
-            required: true
-        },
-        bco: {
-            type: String,
-            lowercase: true,
-            required: true
-        },
-        regdate: {
+        brgy: {
             type: String,
             lowercase: true,
             required: true
@@ -47,4 +33,4 @@ var mongoose = require('mongoose'),
 
     });
 
-module.exports = mongoose.model('taskforce', taskSchema);
+module.exports = mongoose.model('bco', bcoSchema);

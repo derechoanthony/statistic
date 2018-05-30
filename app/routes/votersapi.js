@@ -31,7 +31,7 @@ module.exports = function(router) {
             // } else if (user) {
             //     console.log(voters.brngydata)
             // }
-            console.log(vtrs.brngydata)
+            console.log(vtrs);
         });
 
 
@@ -40,4 +40,4 @@ module.exports = function(router) {
     });
 
     return router;
-}
+};
