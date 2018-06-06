@@ -6,6 +6,10 @@ main {
     padding: 58px;
 }
 
+.removebtn {
+    margin-top: 24px;
+}
+
 header .navbar {
     border-radius: 0px;
 }
@@ -270,4 +274,36 @@ ul[data-pie-id] {
 
 [data-pie-id='my-cool-chart'] li:nth-child(6) {
     color: #ffc8af;
+}
+
+
+/* button */
+
+.btn-danger {
+    color: #fff;
+    background-color: #F44336;
+    border-color: #d43f3a;
+}
+
+.savebtn {
+    margin-right: -34px;
+}
+
+
+/* info data */
+
+.notfound {
+    margin-top: -22px;
+}
+
+.notfound>small {
+    color: red;
+}
+
+.notfoundmember {
+    margin-top: -11px;
+}
+
+.notfoundmember>small {
+    color: red;
 }

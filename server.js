@@ -13,7 +13,8 @@ var port = process.env.PORT || 8000,
 var appRoute = require('./app/routes/api')(router),
     appRoutevoters = require('./app/routes/votersapi')(router),
     appRoute_TF = require('./app/routes/taskforceapi')(router),
-    appRoute_BCO = require('./app/routes/bcoapi')(router);
+    appRoute_BCO = require('./app/routes/bcoapi')(router),
+    appRoute_cluster = require('./app/routes/clusterapi')(router);
 /* logger */
 // var winston = require('./app/config/winston');
 
@@ -33,6 +34,7 @@ app.use("/api", appRoute);
 app.use("/api", appRoutevoters);
 app.use("/api", appRoute_TF);
 app.use("/api", appRoute_BCO);
+app.use("/api", appRoute_cluster);
 
 
 // db connection

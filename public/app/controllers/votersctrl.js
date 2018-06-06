@@ -84,7 +84,8 @@ angular.module('votersControllers', ['votersServices', 'authServices'])
                         prno: lines[k][4],
                         vadd: lines[k][5],
                         bday: lines[k][6],
-                        Barangay: lines[k][7]
+                        Barangay: lines[k][7],
+                        status: 0
 
                     }
                     c.push(jd);
