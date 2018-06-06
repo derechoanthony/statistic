@@ -1,0 +1,5 @@
+1.) run `npm install`
+2.) install mongodb
+3.) run `node barangay.js` or `nodemon barangay.js`
+4.) run `node server.js`
+

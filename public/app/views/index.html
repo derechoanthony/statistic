@@ -15,13 +15,15 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="asset/css/bootstrap.min.css">
     <link rel="stylesheet" href="asset/css/main.css">
-    <script src="asset/js/jquery.min.js"></script>
+    <script src="asset/js/jquery-3.3.1.min.js"></script>
     <script src="asset/js/bootstrap.min.js"></script>
+    <script src="asset/js/custom.js"></script>
 
 
 
     <!-- Custom styles for this template -->
     <script src="asset/js/clck.js"></script>
+
     <script src="asset/js/angular.js"></script>
     <script src="asset/js/angular-route.js"></script>
     <script src="asset/js/angular-animate.js"></script>
@@ -39,13 +41,14 @@
     <script src="app/controllers/usrctrl.js"></script>
     <script src="app/controllers/mainctrl.js"></script>
     <script src="app/controllers/votersctrl.js"></script>
-    <script src="app/controllers/taskforcectrl.js"></script>
+    <script src="app/controllers/clusterctrl.js"></script>
 
     <script src="app/services/userServices.js"></script>
     <script src="app/services/authServices.js"></script>
     <script src="app/services/votersServices.js"></script>
-    <script src="app/services/taskforceServices.js"></script>
+    <script src="app/services/clusterServices.js"></script>
     <script src="asset/js/notify.min.js"></script>
+
 
 
 </head>
@@ -69,8 +72,8 @@
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="/register">
-                            <img src=" asset/image/usericons/groupusr.png " class="profileicon ">&nbsp;User
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <img src=" asset/image/usericons/groupusr.png " class="profileicon ">&nbsp;Registration
                             <span class="caret "></span>
                         </a>
                         <ul class="dropdown-menu ">
@@ -78,15 +81,22 @@
                                 <a href="/register"><img src="asset/image/usericons/new-user.png " class="profileicon ">&nbsp;New User</a>
                             </li>
                             <li>
-                                <a href="# "><img src="asset/image/usericons/bco.png " class="profileicon ">&nbsp;New BCO</a>
-                            </li>
-                            <li>
-                                <a href="# "><img src="asset/image/usericons/group-of-people.png " class="profileicon ">&nbsp;New Taskforce</a>
+                                <a href="/cluster">
+                                    <img src="asset/image/usericons/cluster.png " class="profileicon ">&nbsp;New Cluster</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/comelec-data"><img src="asset/image/usericons/upload.png " class="profileicon ">&nbsp;Upload Data</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <img src="asset/image/usericons/upload.png " class="profileicon ">&nbsp;Upload Data
+                            <span class="caret "></span>
+                        </a>
+                        <ul class="dropdown-menu ">
+                            <li>
+                                <a href="/comelec-data">
+                                    <img src="asset/image/upload/csv.png " class="profileicon ">&nbsp;Comelect Data</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="# ">Page 3</a>

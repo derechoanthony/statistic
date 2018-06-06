@@ -20,24 +20,36 @@ module.exports = function(router) {
             }
         });
     });
-    router.get('/brngy/voters/:id', function(req, res) {
-        var id = req.params.id;
-
-
-        voters.findOne({ '_id': id }).select('Barangay brngydata entrydate uid').exec(function(err, vtrs) {
-            // if (err) throw err;
-            // if (!user) {
-            //     res.json({ success: false, msg: 'Could not authenticate user', code: 203 });
-            // } else if (user) {
-            //     console.log(voters.brngydata)
-            // }
-            console.log(vtrs);
+    router.get('/comelec/data', function(req, response) {
+        var result = {};
+        voters.find({}, function(err, res) {
+            if (err) {
+                result.code = 304;
+                result.success = false;
+                result.msg = err;
+            } else {
+                result.code = 200;
+                result.success = true;
+                result.msg = res;
+            }
+            response.json(result);
         });
-
-
-
-        res.send(id);
     });
-
+    router.get('/brngy/voters/:id/preview', function(req, res) {
+        var id = req.params.id;
+        var data = {};
+        voters.findOne({ '_id': id }).select('Barangay brngydata entrydate uid').exec(function(err, vtrs) {
+            if (err) {
+                data.msg = err.errmsg;
+                data.success = false;
+                data.code = 203;
+            } else {
+                data.msg = vtrs;
+                data.success = true;
+                data.code = 200;
+            }
+            res.json(data);
+        });
+    });
     return router;
 };

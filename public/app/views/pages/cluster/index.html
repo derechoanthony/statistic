@@ -1,0 +1,141 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <span>
+            <img src="asset/image/usericons/teamwork.png" style="height: 20px;">{{title}}
+        </span>
+        <span class="pull-right"></span>
+    </div>
+    <div class="panel-body">
+        <form name="setupNewGrid">
+            <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="inputbrngy">BARANGAY</label>
+                        <select ng-model="brngy" class="form-control" ng-click="sitiofunc()" required>
+                            <option value="" selected >--</option>
+                            <option ng-repeat="l in brngylist" value="{{l}}" >{{l}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="inputsitio">SITIO</label>
+
+                        <select ng-model="sitio" class="form-control" required>
+                            <option value="" selected>--</option>
+                            <option ng-repeat="s in sitiolist" value="{{s}}">{{s}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="inputbco">BCO</label>
+                        <select id="inputbco" ng-model="bco" class="form-control" required style="text-transform:uppercase">
+                            <option value="" selected>--</option>
+<option ng-repeat="bcol in bcolist" value="{{bcol._id}}">{{bcol.fname}} {{bcol.mname}} {{bcol.lname}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="inputtaskforce">TASK FORCE</label>
+                        <select id="inputbco" id="inputtaskforce" ng-model="taskforce" class="form-control" required style="text-transform:uppercase">
+                            <option value="" selected>--</option>
+<option ng-repeat="tskforcelist in taskforcelist" value="{{tskforcelist._id}}">{{tskforcelist.fname}} {{tskforcelist.mname}} {{tskforcelist.lname}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <fieldset class="form-group col-sm-12">
+                <legend>Cluster Leader</legend>
+                <div class="col-sm-12 notfound" ng-show="!clnotfound">
+                    <small id="emailHelp" class=" form-text text-muted text-info">Cluster leader not found in the comelec database!</small>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="input-cl-lname">Last Name</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" id="input-cl-lname" ng-model="cllname" placeholder="Last Name" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="input-cl-fname">First Name</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" id="input-cl-fname" ng-model="clfname" placeholder="First Name" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="input-cl-mname">Middle Name</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" id="input-cl-mname" ng-model="clmname" placeholder="Midlle Name" autocomplete="off" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group col-sm-12">
+                <legend>Family Leader</legend>
+                <div class="col-sm-12 notfound" ng-show="!flnotfound">
+                    <small id="emailHelp" style="text-transform:uppercase" class=" form-text text-muted text-info">Family leader not found in the comelec database!</small>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="input-l-lname">Last Name</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" id="input-l-lname" ng-model="fllname" placeholder="Last Name" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="input-l-fname">First Name</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" id="input-l-fname" ng-model="flfname" placeholder="First Name" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="input-l-mname">Middle Name</label>
+                        <input type="text" style="text-transform:uppercase" class="form-control" id="input-l-mname" ng-model="flmname" placeholder="Midlle Name" autocomplete="off" required>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group col-sm-12">
+                <legend>Family Members</legend>
+                <div ng-repeat="column in columns" class="col-sm-12">
+                    <div class="col-sm-12 notfoundmember " ng-show="!member_{{$index}}">
+                        <small id="emailHelp" class=" form-text text-muted text-info">[{{$index+1}}]Family Member not found in the comelec database!</small>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="input-m-lname">Last Name</label>
+                            <input type="text" style="text-transform:uppercase" class="form-control" id="input-m-lname" ng-model="column.lname" placeholder="Last Name" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="input-m-fname">First Name</label>
+                            <input type="text" style="text-transform:uppercase" class="form-control" id="input-m-fname" ng-model="column.fname" placeholder="First Name" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="input-m-mname">Middle Name</label>
+                            <input type="text" style="text-transform:uppercase" class="form-control" id="input-m-mname" ng-model="column.mname" placeholder="Midlle Name" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <button class="btn btn-danger removebtn" ng-click="removeColumn($index)"><img src="asset/image/btnicon/recycling-bin.png"></button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="col-sm-12">
+                <button class="addfields btn btn-primary" ng-click="addNewColumn()">Add Column</button>
+                <button class="addfields btn btn-success" ng-click="validateentry()">Save</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>

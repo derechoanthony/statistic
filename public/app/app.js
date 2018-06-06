@@ -6,8 +6,10 @@ angular.module('userApp', ['appRoutes',
         'authServices',
         'votersControllers',
         'votersServices',
-        'taskforceControllers',
-        'taskforceServices', 'ui.bootstrap', 'ui.utils'
+        'clusterControllers',
+        'clusterServices',
+        'ui.bootstrap',
+        'ui.utils'
     ])
     .config(function($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptor');

@@ -3,27 +3,28 @@ angular.module('mainControllers', ['authServices'])
         var app = this;
         app.loadme = false;
         app.isloggedIn = false;
-        //  app.data = bookinglist();
         $rootScope.$on('$routeChangeStart', function() {
             if (Auth.isLogIn()) {
                 app.isloggedIn = true;
                 Auth.getUser().then(function(data) {
-                    // console.log(data.data.id);
                     app.uid = data.data.id;
                     app.username = data.data.username;
                     app.loadme = true;
                 });
-                // app.calendardata = bookinglist;
+                if ($location.$$url === "/") {
+                    $location.path('/dashboard');
+                }
             } else {
-                // console.log("Failed: User is not log in");
                 app.uid = '';
                 app.username = '';
                 app.isloggedIn = false;
                 app.loadme = true;
-                // app.calendardata = {};
+                $location.path('/');
             }
+            console.log(app.isloggedIn)
         });
-        console.log('isloggedIn >>', app.isloggedIn);
+        console.log($location.$$url);
+
         this.dologin = function(loginData) {
             app.errorMsg = false;
             app.loading = true;

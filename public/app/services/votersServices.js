@@ -4,5 +4,8 @@ angular.module('votersServices', [])
         votersFactory.create = function(votersdata) {
             return $http.post('/api/voters/upload/data', votersdata);
         };
+        votersFactory.getallvoters = function() {
+            return $http.get('/api/comelec/data');
+        };
         return votersFactory;
     });
