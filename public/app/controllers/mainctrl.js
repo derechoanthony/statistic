@@ -1,5 +1,5 @@
-angular.module('mainControllers', ['authServices'])
-    .controller('mainCtrl', function($http, $location, $timeout, Auth, $rootScope) {
+angular.module('mainControllers', ['authServices', 'clusterServices'])
+    .controller('mainCtrl', function($http, $location, $timeout, Auth, cluster, $rootScope) {
         var app = this;
         app.loadme = false;
         app.isloggedIn = false;
@@ -59,4 +59,10 @@ angular.module('mainControllers', ['authServices'])
             };
             return data;
         };
+        // this.brngycount = function() {
+        cluster.brngycount().then(function(p) {
+            app.list = p.data.data;
+            console.log(p);
+        });
+        // }
     });

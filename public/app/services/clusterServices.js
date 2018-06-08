@@ -10,6 +10,9 @@ angular.module('clusterServices', [])
         clusterFactory.sitiolist = function(data) {
             var d = { "data": data };
             return $http.post("/api/sitio/list", d);
+        };
+        clusterFactory.brngycount = function() {
+            return $http.get('api/brangay/record/count');
         }
         return clusterFactory;
     });

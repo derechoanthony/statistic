@@ -3,10 +3,26 @@ angular.module('clusterControllers', ['clusterServices', 'votersServices', 'auth
         var app = this;
         $scope.flnotfound = true;
         $scope.clnotfound = true;
+        $scope.searchpannel = false;
         $scope.d = new Date();
         $scope.brngylist = [];
         $scope.sitiolist = [];
         $scope.bcolist = [];
+        $scope.vtrs = [];
+        $scope.vtrslist = [];
+
+        $scope.searchvoters = function() {
+            $scope.searchpannel = true;
+            voters.getallvoters().then(function(r) {
+                var z = [];
+                for (var i = 0; i < r.data.msg.length; i++) {
+                    $scope.voters = r.data.msg[i].brngydata;
+                    for (var j = 0; j < $scope.voters.length; j++) {
+                        $scope.vtrslist.push($scope.voters[j]);
+                    }
+                }
+            });
+        }
 
         $scope.taskforcelist = [];
         cluster.barangaylist().then(function(res) {
@@ -76,6 +92,7 @@ angular.module('clusterControllers', ['clusterServices', 'votersServices', 'auth
                 var brgyCont = r.data.msg;
                 for (var i = 0; i < brgyCont.length; i++) {
                     var brgyData = brgyCont[i].brngydata;
+                    // $scope.vtrs.push(brgyData);
                     for (var j = 0; j < brgyData.length; j++) {
                         if ((String(cllname) === String(brgyData[j].lname)) &&
                             (String(clfname) === String(brgyData[j].fname)) &&
@@ -156,6 +173,7 @@ angular.module('clusterControllers', ['clusterServices', 'votersServices', 'auth
             });
 
         };
+        // console.log($scope.vtrs);
         $scope.isInArray = function(value, array) {
             return array.indexOf(value) > -1;
         };

@@ -31,6 +31,7 @@ module.exports = function(router) {
                 result.code = 200;
                 result.success = true;
                 result.msg = res;
+                console.log(res)
             }
             response.json(result);
         });
@@ -38,7 +39,7 @@ module.exports = function(router) {
     router.get('/brngy/voters/:id/preview', function(req, res) {
         var id = req.params.id;
         var data = {};
-        voters.findOne({ '_id': id }).select('Barangay brngydata entrydate uid').exec(function(err, vtrs) {
+        voters.find({ '_id': id }).select('Barangay brngydata entrydate uid').exec(function(err, vtrs) {
             if (err) {
                 data.msg = err.errmsg;
                 data.success = false;

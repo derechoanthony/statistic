@@ -46,22 +46,15 @@ module.exports = function(router) {
     });
     router.get("/brangay/record/count", function(req, response) {
         var brngy_list = [],
-            cl_arr = [];
+            cl_arr = [],
+            v = 0;
         brangay.getallbarangaylist(function(res) {
             if (res.data.length > 0) {
-                for (var i = 0; i < res.data.length; i++) {
-                    // console.log(res.data[i]);
-                    cluster.find({ brngy: res.data[i] }, function(req, r) {
-                        for (var i = 0; i < r.length; i++) {
-                            var clusterleader_ = r[i].clusterleader[0].cllname + '*' + r[i].clusterleader[0].clfname + '*' + r[i].clusterleader[0].clmname;
-                            console.log(clusterleader_);
-                            cl_arr.push(clusterleader_);
-                        }
-                    });
-                }
+                response.send({ success: false, data: res.data })
             } else {
                 response.send({ success: false, data: [] })
             }
+            console.log(res)
         });
     });
     return router;
