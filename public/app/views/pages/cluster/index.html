@@ -1,7 +1,12 @@
+<link rel="stylesheet" href="asset/css/movable.css">
+<script src="asset/js/move.js"></script>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <span>
             <img src="asset/image/usericons/teamwork.png" style="height: 20px;">{{title}}
+            <span class="pull-right" ng-click="searchvoters();">
+                <img style="height: 20px;cursor: pointer;" src="asset/image/icons/menu.png">
+            </span>
         </span>
         <span class="pull-right"></span>
     </div>
@@ -137,5 +142,51 @@
 
 
         </form>
+    </div>
+</div>
+
+
+
+
+<div ng-show="searchpannel" class="panel panel-primary  draggable-panel toolbar-panel ui-draggable ui-resizable" id="toolbox-tools" style="z-index: 99; left: 28.9844px; top: 116.641px; position: absolute; width: 1342.01px; height: 502.008px;">
+    <div class="panel-heading lang-panel-header-tools">Comelec Data
+        <span class="pull-right" ng-click="searchpannel=false">
+            <img src="asset/image/icons/error.png" id="close-toolbox-tools"style="height: 21px;">
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="input-m-mname">
+                <img src="asset/image/icons/search.png" style="height: 21px;">Search</label>
+                <input type="text" class="form-control" id="input-m-mname" placeholder="Search.." ng-model="search" autocomplete="off" required>
+            </div>
+        </div>
+        <div class="cols-sm-6 col-offset-sm-1">
+            <span class="text-dark pull-right totalrows">Total Rows:{{results.length}}</span>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Middlename</th>
+                    <th>Lastname</th>
+                    <th>PRNo.</th>
+                    <th>Barangay</th>
+                    <th>Voters Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="vlist in results=(vtrslist | filter : search) track by $index">
+                    <td>{{vlist.fname}}</td>
+                    <td>{{vlist.mname}}</td>
+                    <td>{{vlist.lname}}</td>
+                    <td>{{vlist.prno}}</td>
+                    <td>{{vlist.Barangay}}</td>
+                    <td>{{vlist.vadd}}</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>

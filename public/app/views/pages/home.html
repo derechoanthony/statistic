@@ -1,5 +1,33 @@
 <div class="page-header" ng-module="main.isloggedIn">
     <h1>
-        Hi {{main.username}}, form world >>{{main.bookinglist()}}
+        Barangay Reports
     </h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Barangay</th>
+                            <th>Cluster Leader Count</th>
+                            <th>Family Leader Count</th>
+                            <th>Family Member Count</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="n in main.list">
+                            <td>{{n.barangay}}</td>
+                            <td>{{n.cluster_count}}</td>
+                            <td>{{n.familyleader_count}}</td>
+                            <td>{{n.familymember_count}}</td>
+                            <td>USA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

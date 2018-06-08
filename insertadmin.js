@@ -1,16 +1,20 @@
 var usr = require("./app/models/user");
 var mongoose = require('mongoose');
 var json = [{
-    "fname": "tony",
-    "mname": "-",
-    "lname": "stark",
-    "username": "hydra",
-    "usrtype": "admin",
-    "password": "$2a$10$WwBtvtWa/ssTLpFHgvC/EeScyv3xYbj8Z1UCS4rx86V5W/otVZjGO",
-    "pwd": "6tcTjebF",
-    "status": "active",
-    "created": "-"
-}];
+        "fname": "ben",
+        "mname": "leens",
+        "lname": "go",
+        "username": "bengo",
+        "usrtype": "admin",
+        "password": "$2a$10$2zFZIoYYzQ7koKBiygj2ZerDD4qwbedjfsjx7Y5m.WmVuk7agWu16",
+        "pwd": "4bGxWUIY",
+        "status": "active",
+        "created": "5b175d3effa60da4cb3500b4"
+    }
+
+
+
+];
 mongoose.connect('mongodb://localhost:27017/db', function(err) {
     if (err) {
         console.log('Not connected to database; ' + err);
