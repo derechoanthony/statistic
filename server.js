@@ -14,6 +14,7 @@ var appRoute = require('./app/routes/api')(router),
     appRoutevoters = require('./app/routes/votersapi')(router),
     appRoute_TF = require('./app/routes/taskforceapi')(router),
     appRoute_BCO = require('./app/routes/bcoapi')(router),
+    appRoute_print = require('./app/routes/print')(router),
     appRoute_cluster = require('./app/routes/clusterapi')(router);
 /* logger */
 // var winston = require('./app/config/winston');
@@ -25,8 +26,8 @@ app.use(morgan('dev'));
 // }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'))
-app.use(express.static(__dirname + '/node_modules'))
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/node_modules'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
@@ -36,6 +37,7 @@ app.use("/api", appRoutevoters);
 app.use("/api", appRoute_TF);
 app.use("/api", appRoute_BCO);
 app.use("/api", appRoute_cluster);
+app.use("/api/print", appRoute_print);
 
 
 // db connection
