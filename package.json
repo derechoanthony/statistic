@@ -10,11 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "angular-data-table": "^0.7.1",
+    "angular-font-awesome": "^3.1.2",
     "app-root-path": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.1.1",
     "express": "^4.16.3",
+    "html-pdf": "^2.2.0",
     "jquery": "^3.3.1",
     "jsonwebtoken": "^8.2.1",
     "lodash": "^4.17.10",

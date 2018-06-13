@@ -1,5 +1,6 @@
 var dbo = require("../models/bco"),
     code = require('../config/codec');
+var User = require('../models/user');
 module.exports = function(router) {
     /* 
     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -153,17 +154,24 @@ module.exports = function(router) {
     router.get("/bco/:id/preview", function(req, response) {
         var result = {},
             que = {
-                code: req.params.id
+                _id: req.params.id
             };
-        dbo.findOne(que, function(err, res) {
+        User.findOne(que, function(err, res) {
             if (err) {
                 result.code = 304;
                 result.success = false;
                 result.msg = err;
             } else {
-                result.code = 200;
-                result.success = true;
-                result.msg = res;
+                if (res.usrtype == "bco") {
+                    result.code = 200;
+                    result.success = true;
+                    result.msg = res;
+                } else {
+                    result.code = 304;
+                    result.success = false;
+                    result.msg = "Not BCO.";
+                }
+
             }
             response.send(result);
         });
