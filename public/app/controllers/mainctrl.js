@@ -1,5 +1,5 @@
 angular.module('mainControllers', ['authServices', 'clusterServices'])
-    .controller('mainCtrl', function($http, $location, $timeout, Auth, cluster, $rootScope) {
+    .controller('mainCtrl', function($http, $location, $timeout, Auth, cluster, $routeParams, $scope, $rootScope) {
         var app = this;
         app.loadme = false;
         app.isloggedIn = false;
@@ -11,7 +11,10 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
                     app.username = data.data.username;
                     app.loadme = true;
                 });
-                if ($location.$$url === "/") {
+                if ($location.$$url == "/") {
+                    $location.path('/dashboard');
+                }
+                if ($location.$$url == '/#%20') {
                     $location.path('/dashboard');
                 }
             } else {
@@ -21,15 +24,12 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
                 app.loadme = true;
                 $location.path('/');
             }
-            console.log(app.isloggedIn)
         });
-        console.log($location.$$url);
-
+        console.log(($location.$$url));
         this.dologin = function(loginData) {
             app.errorMsg = false;
             app.loading = true;
             Auth.login(app.loginData).then(function(params) {
-                // console.log(params.data)
                 if (params.data.success) {
                     app.loading = false;
                     app.successMsg = params.data.msg + '... Redirecting.';
@@ -48,7 +48,7 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
             Auth.logout();
             $location.path('/logout');
             $timeout(function() {
-                $location.path('/');
+                $location.path("/");
             }, 1000);
         };
         // booking list
@@ -59,10 +59,7 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
             };
             return data;
         };
-        // this.brngycount = function() {
         cluster.brngycount().then(function(p) {
             app.list = p.data.data;
-            console.log(p);
         });
-        // }
     });

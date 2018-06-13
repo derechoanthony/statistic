@@ -1,10 +1,86 @@
-<div class="page-header" ng-module="main.isloggedIn">
-    <h1>
-        Barangay Reports
-    </h1>
-</div>
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="col-xs-4">
+        <div class="panel voters-dashboard">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img class="fa  fa-2x" src="asset/image/icons/crowd-of-users.png" style="height: 70px;">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">&nbsp;</p>
+                        <p class="announcement-text">Register Voters</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            View
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="panel cl-dashboard">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img class="fa  fa-2x" src="asset/image/icons/teamwork.png" style="height: 70px;">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">&nbsp;</p>
+                        <p class="announcement-text">Cluster Leaders</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            View
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="panel fl-dashboard">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img class="fa  fa-2x" src="asset/image/icons/family-silhouette.png" style="height: 70px;">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">&nbsp;</p>
+                        <p class="announcement-text">Family Leaders</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            View
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-7">
         <div class="col-sm-12">
             <div class="table-responsive">
                 <table class="table">
@@ -14,20 +90,64 @@
                             <th>Cluster Leader Count</th>
                             <th>Family Leader Count</th>
                             <th>Family Member Count</th>
-                            <th>&nbsp;</th>
+                            <th style="    width: 10%;">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="n in main.list">
-                            <td>{{n.barangay}}</td>
+                            <td style="text-transform:uppercase">{{n.barangay}}</td>
                             <td>{{n.cluster_count}}</td>
                             <td>{{n.familyleader_count}}</td>
                             <td>{{n.familymember_count}}</td>
-                            <td>USA</td>
+                            <td style="    width: 10%;" class="text-center">
+                                <!-- <input type="button" value="view" ng-click="main.ViewBrngyData(n.barangay);"> -->
+                                <a href="/brngy/cluster/data/{{n.barangay}}/user/{{main.uid}}/type/brngycluster">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+
+    <div class="col-sm-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fas fa-location-arrow"></i> Barangay
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-list-ol fa-1x"></i> Count
+                        <span class="pull-right text-muted small">
+                            
+                        </span>
+                    </a>
+
+                    <a href="#" class="list-group-item" ng-repeat="n in results=(main.list)">
+                        <div>
+                            <span class="text-uppercase">{{n.barangay}}</span>
+                            <span class="pull-right text-muted small">
+                                <em>{{n.cluster_count+n.familyleader_count+n.familymember_count}}</em>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+                <!-- /.list-group -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+
     </div>
 </div>

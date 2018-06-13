@@ -1,0 +1,31 @@
+{{main.clusterbrngydata}}
+<div class="container">
+    <div class="col-sm-12">
+        <h2 style="text-transform:uppercase">{{brngyname}}</h2>
+        <p class="form-text text-muted text-primary">List of cluster leader with count of family leader and member.</p>
+    </div>
+    <div class="col-sm-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cluster Leader</th>
+                    <th style="width: 20%;">Family Leader</th>
+                    <th style="width: 20%;">Family Member</th>
+                    <th style="width: 10%;">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="n in clusterbrngydata">
+                    <td>{{n.clLeader[0].lname}} {{n.clLeader[0].fname}} {{n.clLeader[0].mname}}</td>
+                    <td style="width: 20%;">{{n.fl_cnt}}</td>
+                    <td style="width: 20%;">{{n.fm_cnt}}</td>
+                    <td style="width: 10%;" class="text-center">
+                        <a href="/brngy/family/data/{{brngyname}}/user/{{main.uid}}/type/f1pr3v13w?q={{n.clLeader[0].lname}}!{{n.clLeader[0].fname}}!{{n.clLeader[0].mname}}">
+                            <i class="fas fa-eye"></i>
+                            <a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

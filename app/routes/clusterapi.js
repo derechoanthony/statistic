@@ -1,5 +1,6 @@
 var cluster = require('../models/cluster');
 var brangay = require("../controller/index");
+var User = require('../models/user');
 module.exports = function(router) {
     router.post("/create/cluster", function(req, res) {
         console.log(">>>", req.body);
@@ -50,12 +51,54 @@ module.exports = function(router) {
             v = 0;
         brangay.getallbarangaylist(function(res) {
             if (res.data.length > 0) {
-                response.send({ success: false, data: res.data })
+                response.send({ success: false, data: res.data });
             } else {
-                response.send({ success: false, data: [] })
+                response.send({ success: false, data: [] });
             }
-            console.log(res)
+            console.log(res);
         });
     });
+
+    router.post("/barangy/cluster/record", function(req, res) {
+        brangay.getAllcl(req.body, function(r) {
+            res.send(r);
+        });
+    });
+
+    router.post("/barangy/fmleader/record", function(req, res) {
+        brangay.getAllFam(req.body, function(r) {
+            if (r.length > 0) {
+                res.send({ success: true, data: r });
+            } else {
+                res.send({ success: false, data: r });
+            }
+        });
+    });
+    router.get("/cluster/:id/preview", function(req, response) {
+        var result = {},
+            que = {
+                _id: req.params.id
+            };
+        User.findOne(que, function(err, res) {
+            if (err) {
+                result.code = 304;
+                result.success = false;
+                result.msg = err;
+            } else {
+                if (res.usrtype == "taskforce") {
+                    result.code = 200;
+                    result.success = true;
+                    result.msg = res;
+                } else {
+                    result.code = 304;
+                    result.success = false;
+                    result.msg = "Not taskforce.";
+                }
+            }
+            response.send(result);
+        });
+    });
+
+
     return router;
-}
+};

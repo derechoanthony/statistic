@@ -1,0 +1,225 @@
+
+    <div class="panel panel-primary" >
+        <div class="panel-heading">
+            <span>
+            <img src="asset/image/usericons/user.png" style="height: 20px;">{{title}}
+        </span>
+            <span class="pull-right"></span>
+        </div>
+        <div class="panel-body">
+            <!-- entry form -->
+            <form ng-submit="register.regUser(regData);" autocomplete="off" ng-show="register.userentry">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="inputfname">First Name</label>
+                        <input type="text" id="inputfname" autocomplete="off" required class="form-control" placeholder="Enter First Name" ng-model="register.regData.fname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="inputmname">Middle Name</label>
+                        <input type="text" id="inputmname" autocomplete="off" autocomplete="off" required class="form-control" placeholder="Enter Middle Name" ng-model="register.regData.mname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="inputlname">Last Name</label>
+                        <input type="text" id="inputlname" autocomplete="off" required class="form-control" placeholder="Enter Last Name" ng-model="register.regData.lname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="inputuname">UserName</label>
+                        <input type="text" id="inputuname" autocomplete="off" required class="form-control" placeholder="Enter User Name" ng-model="register.regData.username">
+                        <small id="emailHelp" class="form-text text-muted text-info">Password will generate after clicking the "Save" button.</small>
+                        <br>
+                        <small id="emailHelp" class="form-text text-muted text-danger">
+                        <b>*Note</b>
+                        <i>UserName could be the taskforce or the BCO.</i>
+                    </small>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group ">
+                        <label for="sel1">UserType</label>
+                        <select class="form-control " id="sel1" ng-model="register.regData.usrtype" required>
+                        <option value="" selected="selected">--</option>
+                        <option value="co-admin">Co-admin</option>
+                        <option value="encoder">Encoder</option>
+                        <option value="viewer">Viewer</option>
+                        <option value="bco">Barangay coordinator Officer</option>
+                        <option value="taskforce">TaskForce</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+            <!-- end of entry form -->
+            <!-- user preview -->
+            <form autocomplete="off" ng-show="register.preview">
+                <div class="col-sm-12">
+                    <label for="p_fname">Data Entry: {{register.dataid}}</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_fname">First Name</label>
+                        <input type="text" id="p_fname" autocomplete="off" readonly class="form-control" ng-model="register.p_fname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_mname">Middle Name</label>
+                        <input type="text" id="p_mname" autocomplete="off" readonly class="form-control" ng-model="register.p_mname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_lname">Last Name</label>
+                        <input type="text" id="p_lname" autocomplete="off" readonly class="form-control" ng-model="register.p_lname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_uname">User Name</label>
+                        <input type="text" id="p_uname" autocomplete="off" readonly class="form-control" ng-model="register.p_uname">
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_pwd">Password</label>
+                        <input type="text" id="p_pwd" autocomplete="off" readonly class="form-control" ng-model="register.p_pwd">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_usrtype">User Type</label>
+                        <input type="text" id="p_usrtype" autocomplete="off" readonly class="form-control" ng-model="register.p_usrtype">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="p_status">Status</label>
+                        <input type="text" id="p_status" style="font-weight: 700;" autocomplete="off" readonly class="form-control" ng-model="register.p_status">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" ng-click="register.userentry=true;register.preview=false;register.update = false;">Close</button>
+                </div>
+            </form>
+            <!-- end of preview -->
+            <!-- update -->
+            <form autocomplete="off" ng-show="register.update">
+                <div class="col-sm-12">
+                    <label for="p_fname">Data Entry: {{register.dataid}}</label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="u_fname">First Name</label>
+                        <input type="text" id="u_fname" autocomplete="off" class="form-control" ng-model="register.u_fname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="u_mname">Middle Name</label>
+                        <input type="text" id="u_mname" autocomplete="off" class="form-control" ng-model="register.u_mname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="u_lname">Last Name</label>
+                        <input type="text" id="u_lname" autocomplete="off" class="form-control" ng-model="register.u_lname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="u_uname">User Name</label>
+                        <input type="text" id="u_uname" autocomplete="off" class="form-control" ng-model="register.u_uname">
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="u_pwd" class="col-sm-12">Password</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="u_pwd" autocomplete="off" class="custom-pwd form-control" ng-model="register.u_pwd">
+                            <input type="button" class="btn btn-primary genbutton" value="Generate Password" ng-click="register.newPwd()">
+                        </div>
+                        <div class="col-sm-12 passwordinfo">
+                            <small id="u_pwd" class="form-text text-muted text-info">Click the Generate Password button if you want to change the password or input your desire password.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="u_usrtype">User Type</label>
+                        <select class="form-control " id="u_usrtype" ng-model="register.u_usrtype" required>
+                        <option value="co-admin">Co-admin</option>
+                        <option value="encoder">Encoder</option>
+                        <option value="viewer">Viewer</option>
+                        <option value="bco">Barangay coordinator Officer</option>
+                        <option value="taskforce">TaskForce</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-success" ng-click="register.updateUserData(register.dataid);">Update</button>
+                </div>
+            </form>
+            <!-- end udpate -->
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" id="inputuname" placeholder="Search User..." class="form-control" ng-model="register.search" autocomplete="off">
+                </div>
+            </div>
+            <div class="cols-sm-6 col-offset-sm-1">
+                <span class="text-dark pull-right totalrows">Total Rows:{{results.length}}</span>
+            </div>
+            <table class="table table-fixed">
+                <thead>
+                    <tr>
+                        <th style="width: 6%">&nbsp;</th>
+                        <th class="th-label" style="width: 14%">UserName</th>
+                        <th class="col-xs-2 th-label">First Name</th>
+                        <th class="col-xs-2 th-label">Middle Name</th>
+                        <th class="col-xs-2 th-label">Last Name</th>
+                        <th class="col-xs-1 th-label">User Type</th>
+                        <th class="col-xs-1 th-label">Status</th>
+                        <th class="col-xs-4 th-label">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="n in results = (register.userlist | filter : register.search)">
+
+                        <td class="icount">{{$index+1}}
+                            <img src="asset/image/usericons/{{n.status}}.png">
+                        </td>
+                        <td style="width: 14%" class="{{n.status}}">{{n.username}}</td>
+                        <td class="col-xs-2 {{n.status}}">{{n.fname}}</td>
+                        <td class="col-xs-2 {{n.status}}">{{n.mname}}</td>
+                        <td class="col-xs-2 {{n.status}}">{{n.lname}}</td>
+                        <td class="col-xs-1 {{n.status}}">{{n.usrtype}}</td>
+                        <td class="col-xs-1 {{n.status}}">{{n.status}}</td>
+                        <td class="col-xs-4 text-right">
+
+                            <button type="button" class="btn btn-primary" ng-click="register.userpreview(n._id)">
+                            <img src="asset/image/btnicon/folder.png">&nbsp;Preview
+                        </button>
+                            <button type="button" class="btn btn-warning" ng-click="register.userupdate(n._id)">
+                            <img src="asset/image/btnicon/edit.png">&nbsp;Edit
+                        </button>
+                            <button type="button" class="btn btn-danger" ng-click="register.userdeactivate(n._id)">
+                            <img src="asset/image/btnicon/recycling-bin.png">&nbsp;Deactivate
+                        </button>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+   
