@@ -3,6 +3,7 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
         var app = this;
         app.loadme = false;
         app.isloggedIn = false;
+
         $rootScope.$on('$routeChangeStart', function() {
             if (Auth.isLogIn()) {
                 app.isloggedIn = true;
@@ -10,6 +11,9 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
                     app.uid = data.data.id;
                     app.username = data.data.username;
                     app.loadme = true;
+                    cluster.brngycount().then(function(p) {
+                        app.list = p.data.data;
+                    });
                 });
                 if ($location.$$url == "/") {
                     $location.path('/dashboard');
@@ -59,7 +63,5 @@ angular.module('mainControllers', ['authServices', 'clusterServices'])
             };
             return data;
         };
-        cluster.brngycount().then(function(p) {
-            app.list = p.data.data;
-        });
+
     });

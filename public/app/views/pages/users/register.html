@@ -13,12 +13,12 @@
         </ul>
         <ul class="sidebar-nav" id="sidebar">
             <li>
-                <a>New User
+                <a href="/register">New User
                     <span style="margin-left: -7px" class="fa fa-user-plus"></span>
                 </a>
             </li>
             <li>
-                <a>New Cluster
+                <a href="/cluster">New Cluster
                     <span style="margin-left: -7px" class="fa fa-users"></span>
                 </a>
             </li>
@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary pannel-custom">
                         <div class="panel-heading">
                             <span>
                                 <img src="asset/image/usericons/user.png" style="height: 20px;">{{title}}
@@ -76,13 +76,13 @@
                                     <div class="form-group ">
                                         <label for="sel1">UserType</label>
                                         <select class="form-control " id="sel1" ng-model="register.regData.usrtype" required>
-                        <option value="" selected="selected">--</option>
-                        <option value="co-admin">Co-admin</option>
-                        <option value="encoder">Encoder</option>
-                        <option value="viewer">Viewer</option>
-                        <option value="bco">Barangay coordinator Officer</option>
-                        <option value="taskforce">TaskForce</option>
-                    </select>
+                                            <option value="" selected="selected">--</option>
+                                            <option value="co-admin">Co-admin</option>
+                                            <option value="encoder">Encoder</option>
+                                            <option value="viewer">Viewer</option>
+                                            <option value="bco">Barangay coordinator Officer</option>
+                                            <option value="taskforce">TaskForce</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -189,12 +189,12 @@
                                     <div class="form-group">
                                         <label for="u_usrtype">User Type</label>
                                         <select class="form-control " id="u_usrtype" ng-model="register.u_usrtype" required>
-                        <option value="co-admin">Co-admin</option>
-                        <option value="encoder">Encoder</option>
-                        <option value="viewer">Viewer</option>
-                        <option value="bco">Barangay coordinator Officer</option>
-                        <option value="taskforce">TaskForce</option>
-                    </select>
+                                            <option value="co-admin">Co-admin</option>
+                                            <option value="encoder">Encoder</option>
+                                            <option value="viewer">Viewer</option>
+                                            <option value="bco">Barangay coordinator Officer</option>
+                                            <option value="taskforce">TaskForce</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -263,9 +263,3 @@
         </div>
 
     </div>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("active");
-        });
-    </script>
